@@ -43,6 +43,8 @@ Built with a retro-futuristic aesthetic, Tether ensures that system interaction 
 ![approve-command](image-6.png)
 <!-- Add screenshot of Admin Dashboard here showing Rules, Users, and Audit Logs -->
 
+[Demo video url](https://drive.google.com/file/d/17HuHLi6E-35qrUfQZWwNZfVQPbT9Pqgh/view?usp=sharing)
+
 ## Tech Stack
 
 - **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
