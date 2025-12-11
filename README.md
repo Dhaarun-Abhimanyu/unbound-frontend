@@ -21,11 +21,27 @@ Built with a retro-futuristic aesthetic, Tether ensures that system interaction 
 
 ## Interface
 
-### Admin Dashboard
-<!-- Add screenshot of Admin Dashboard here showing Rules, Users, and Audit Logs -->
-
 ### User Dashboard
+#### login screen
+![user-login](image.png)
+#### command panel
+![user-execute](image-1.png)
+#### command awaiting approval
+![waiting-approval](image-5.png)
+#### notifications
+![notification](image-7.png)
 <!-- Add screenshot of User Dashboard here showing Command Input and History -->
+
+### Admin Dashboard
+#### rules tab
+![rules](image-2.png)
+#### adding users
+![add-users](image-3.png)
+#### logs
+![logs](image-4.png)
+#### approve/reject command
+![approve-command](image-6.png)
+<!-- Add screenshot of Admin Dashboard here showing Rules, Users, and Audit Logs -->
 
 ## Tech Stack
 
