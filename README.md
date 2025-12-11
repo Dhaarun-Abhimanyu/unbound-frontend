@@ -52,3 +52,17 @@ Built with a retro-futuristic aesthetic, Tether ensures that system interaction 
 - **Icons:** Lucide React
 - **Animations:** GSAP (GreenSock)
 - **Backend Integration:** REST API
+
+## ⚡ Getting Started
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+2. Setup environemnt with the help of .env.example(backend url)
+
+3. **Run the development server**
+    ```bash
+    npm run dev
+    ```
