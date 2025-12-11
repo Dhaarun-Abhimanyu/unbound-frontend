@@ -38,15 +38,15 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* Add terminal color palette */
-  --terminal-bg: #0a0a0a;
-  --terminal-text: #00ff00;
-  --terminal-accent: #00ff00;
-  --terminal-dim: #666666;
-  --terminal-success: #00ff00;
-  --terminal-error: #ff0055;
-  --terminal-warning: #ffaa00;
-  --terminal-info: #00aaff;
+  /* Add terminal color palette - B&W Theme */
+  --terminal-bg: #09090b;      /* Zinc 950 (Deep Black) */
+  --terminal-text: #fafafa;    /* Zinc 50 (White) */
+  --terminal-accent: #ffffff;  /* White Accent */
+  --terminal-dim: #a1a1aa;     /* Zinc 400 (Gray) */
+  --terminal-success: #22c55e; /* Green 500 */
+  --terminal-error: #ef4444;   /* Red 500 */
+  --terminal-warning: #eab308; /* Yellow 500 */
+  --terminal-info: #3b82f6;    /* Blue 500 */
 }
 
 .dark {

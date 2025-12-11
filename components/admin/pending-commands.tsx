@@ -4,10 +4,13 @@ import { useState, useEffect } from "react"
 import { api } from "@/lib/api"
 
 interface PendingCommand {
-  id: string
-  user: string
+  _id: string
+  user_id: {
+    username: string
+    role: string
+  }
   command: string
-  requested_at: string
+  executed_at: string
 }
 
 export default function PendingCommands({ apiKey }: { apiKey: string }) {
@@ -67,20 +70,20 @@ export default function PendingCommands({ apiKey }: { apiKey: string }) {
       ) : (
         <div className="space-y-2 max-h-96 overflow-y-auto">
           {commands.map((cmd) => (
-            <div key={cmd.id} className="p-3 border border-terminal-warning rounded bg-black/50">
+            <div key={cmd._id} className="p-3 border border-terminal-warning rounded bg-black/50">
               <div className="mb-3">
                 <p className="text-terminal-warning font-mono mb-1">{cmd.command}</p>
-                <p className="text-terminal-dim text-xs">{`user: ${cmd.user} | requested: ${cmd.requested_at}`}</p>
+                <p className="text-terminal-dim text-xs">{`user: ${cmd.user_id?.username || 'Unknown'} | requested: ${cmd.executed_at}`}</p>
               </div>
               <div className="flex gap-2">
                 <button
-                  onClick={() => handleApprove(cmd.id)}
+                  onClick={() => handleApprove(cmd._id)}
                   className="flex-1 py-1 px-3 bg-terminal-success/20 border border-terminal-success text-terminal-success text-sm rounded hover:bg-terminal-success/40"
                 >
                   ✓ APPROVE
                 </button>
                 <button
-                  onClick={() => handleReject(cmd.id)}
+                  onClick={() => handleReject(cmd._id)}
                   className="flex-1 py-1 px-3 bg-terminal-error/20 border border-terminal-error text-terminal-error text-sm rounded hover:bg-terminal-error/40"
                 >
                   ✗ REJECT

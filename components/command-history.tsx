@@ -33,7 +33,7 @@ export default function CommandHistory({ commands, loading }: CommandHistoryProp
           commands.map((cmd) => (
             <div key={cmd.id} className="p-3 border border-terminal-dim rounded bg-black/50">
               <div className="flex items-start justify-between gap-2 mb-2">
-                <code className="text-terminal-info text-sm">{cmd.command}</code>
+                <code className="text-terminal-text font-bold text-sm">{cmd.command}</code>
                 <span
                   className={`text-xs px-2 py-1 rounded ${
                     cmd.status === "EXECUTED"

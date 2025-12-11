@@ -6,17 +6,18 @@ import { useState, useEffect } from "react"
 import { api } from "@/lib/api"
 
 interface Rule {
-  id: string
+  _id: string
   pattern: string
-  action: "AUTO_ACCEPT" | "AUTO_REJECT"
+  action: "AUTO_ACCEPT" | "AUTO_REJECT" | "REQUIRE_APPROVAL"
   description?: string
+  priority?: number
 }
 
 export default function RulesManager({ apiKey }: { apiKey: string }) {
   const [rules, setRules] = useState<Rule[]>([])
   const [loading, setLoading] = useState(true)
   const [pattern, setPattern] = useState("")
-  const [action, setAction] = useState<"AUTO_ACCEPT" | "AUTO_REJECT">("AUTO_ACCEPT")
+  const [action, setAction] = useState<"AUTO_ACCEPT" | "AUTO_REJECT" | "REQUIRE_APPROVAL">("AUTO_ACCEPT")
   const [description, setDescription] = useState("")
   const [error, setError] = useState("")
   const [submitting, setSubmitting] = useState(false)
@@ -85,12 +86,13 @@ export default function RulesManager({ apiKey }: { apiKey: string }) {
             <label className="block text-terminal-accent text-sm mb-2">ACTION</label>
             <select
               value={action}
-              onChange={(e) => setAction(e.target.value as "AUTO_ACCEPT" | "AUTO_REJECT")}
+              onChange={(e) => setAction(e.target.value as "AUTO_ACCEPT" | "AUTO_REJECT" | "REQUIRE_APPROVAL")}
               className="w-full px-3 py-2 bg-terminal-bg border border-terminal-dim rounded text-terminal-text"
               disabled={submitting}
             >
               <option value="AUTO_ACCEPT">AUTO_ACCEPT</option>
               <option value="AUTO_REJECT">AUTO_REJECT</option>
+              <option value="REQUIRE_APPROVAL">REQUIRE_APPROVAL</option>
             </select>
           </div>
 
@@ -128,20 +130,22 @@ export default function RulesManager({ apiKey }: { apiKey: string }) {
         ) : (
           <div className="space-y-2 max-h-96 overflow-y-auto">
             {rules.map((rule) => (
-              <div key={rule.id} className="p-3 border border-terminal-dim rounded bg-black/50">
+              <div key={rule._id} className="p-3 border border-terminal-dim rounded bg-black/50">
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <code className="text-terminal-info text-sm flex-1">{rule.pattern}</code>
                   <span
                     className={`text-xs px-2 py-1 rounded whitespace-nowrap ${
                       rule.action === "AUTO_ACCEPT"
                         ? "bg-terminal-success/20 text-terminal-success"
-                        : "bg-terminal-error/20 text-terminal-error"
+                        : rule.action === "AUTO_REJECT"
+                        ? "bg-terminal-error/20 text-terminal-error"
+                        : "bg-terminal-warning/20 text-terminal-warning"
                     }`}
                   >
                     {rule.action}
                   </span>
                   <button
-                    onClick={() => handleDeleteRule(rule.id)}
+                    onClick={() => handleDeleteRule(rule._id)}
                     className="text-terminal-error hover:text-terminal-accent text-xs px-2 py-1 border border-terminal-dim rounded"
                   >
                     DELETE

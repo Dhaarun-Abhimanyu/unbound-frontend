@@ -44,7 +44,7 @@ export const Api = {
   // Command Approval (Admin Only)
   getPendingCommands: (apiKey) => request('/api/admin/pending-commands', { method: 'GET' }, apiKey),
   approvePendingCommand: (apiKey, id, action) =>
-    request(`/api/admin/pending-commands/${id}`, { method: 'POST', body: JSON.stringify({ action }) }, apiKey),
+    request(`/api/admin/pending-commands/${id}`, { method: 'PUT', body: JSON.stringify({ action }) }, apiKey),
 
   // User Management (Admin Only)
   getUsers: (apiKey) => request('/api/users', { method: 'GET' }, apiKey),
@@ -59,3 +59,25 @@ export const Api = {
 
 // Alias to avoid import mismatches
 export const api = Api;
+
+export const updateUserCredits = async (id, amount) => {
+  // Ensure headers like 'x-api-key' are preserved here as per your request
+  
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/${id}/credits`, { // Adjust URL as needed
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      // ...existing headers... 
+    },
+    body: JSON.stringify({ 
+      amount: Number(amount) // FIX: Convert to Number to satisfy backend validation
+    }),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || 'Failed to update credits');
+  }
+
+  return response.json();
+};

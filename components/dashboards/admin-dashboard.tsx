@@ -10,11 +10,36 @@ export default function AdminDashboard({ apiKey }: { apiKey: string }) {
   return (
     <Tabs defaultValue="commands" className="w-full">
       <TabsList className="grid w-full grid-cols-5 bg-black/30 border border-terminal-dim">
-        <TabsTrigger value="commands">COMMANDS</TabsTrigger>
-        <TabsTrigger value="rules">RULES</TabsTrigger>
-        <TabsTrigger value="users">USERS</TabsTrigger>
-        <TabsTrigger value="pending">PENDING</TabsTrigger>
-        <TabsTrigger value="logs">AUDIT</TabsTrigger>
+        <TabsTrigger 
+          value="commands" 
+          className="text-terminal-dim data-[state=active]:bg-terminal-accent data-[state=active]:text-terminal-bg hover:text-terminal-text transition-colors"
+        >
+          COMMANDS
+        </TabsTrigger>
+        <TabsTrigger 
+          value="rules" 
+          className="text-terminal-dim data-[state=active]:bg-terminal-accent data-[state=active]:text-terminal-bg hover:text-terminal-text transition-colors"
+        >
+          RULES
+        </TabsTrigger>
+        <TabsTrigger 
+          value="users" 
+          className="text-terminal-dim data-[state=active]:bg-terminal-accent data-[state=active]:text-terminal-bg hover:text-terminal-text transition-colors"
+        >
+          USERS
+        </TabsTrigger>
+        <TabsTrigger 
+          value="pending" 
+          className="text-terminal-dim data-[state=active]:bg-terminal-accent data-[state=active]:text-terminal-bg hover:text-terminal-text transition-colors"
+        >
+          PENDING
+        </TabsTrigger>
+        <TabsTrigger 
+          value="logs" 
+          className="text-terminal-dim data-[state=active]:bg-terminal-accent data-[state=active]:text-terminal-bg hover:text-terminal-text transition-colors"
+        >
+          AUDIT
+        </TabsTrigger>
       </TabsList>
 
       <TabsContent value="commands" className="mt-4">

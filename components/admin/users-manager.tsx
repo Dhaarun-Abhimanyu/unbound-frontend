@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { api } from "@/lib/api"
 
 interface User {
-  id: string
+  _id: string
   username: string
   credits: number
   role: "ADMIN" | "MEMBER"
@@ -141,7 +141,7 @@ export default function UsersManager({ apiKey }: { apiKey: string }) {
               >
                 <option value="">Choose user...</option>
                 {users.map((user) => (
-                  <option key={user.id} value={user.id}>
+                  <option key={user._id} value={user._id}>
                     {user.username}
                   </option>
                 ))}
@@ -180,7 +180,7 @@ export default function UsersManager({ apiKey }: { apiKey: string }) {
         ) : (
           <div className="space-y-2 max-h-96 overflow-y-auto">
             {users.map((user) => (
-              <div key={user.id} className="p-3 border border-terminal-dim rounded bg-black/50">
+              <div key={user._id} className="p-3 border border-terminal-dim rounded bg-black/50">
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <p className="text-terminal-text font-mono">{user.username}</p>
