@@ -5,6 +5,12 @@
 
 Built with a retro-futuristic aesthetic, Tether ensures that system interaction is both seamless for users and strictly controlled for administrators.
 
+## Hosted version
+
+- url: https://unbound-hack-frontend.vercel.app
+- admin key: 7306e36ed945f525a40d661768829a68683e19cd0dce5f33ca0b94961522217e
+- user key: 929b39c01344b2616234ed80a1ad752dd8e5e8bb90eacd953ddb044a378dd10b
+
 ## Features
 
 ### Core Functionality
