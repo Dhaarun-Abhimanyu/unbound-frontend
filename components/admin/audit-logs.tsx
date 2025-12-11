@@ -4,11 +4,17 @@ import { useState, useEffect } from "react"
 import { api } from "@/lib/api"
 
 interface AuditLog {
-  id: string
-  user: string
-  command: string
+  _id: string
+  user_id: {
+    username: string
+    role: string
+  } | null
+  matched_rule_id?: {
+    pattern: string
+  }
+  command_text: string
   status: string
-  timestamp: string
+  executed_at: string
 }
 
 export default function AuditLogs({ apiKey }: { apiKey: string }) {
@@ -64,9 +70,11 @@ export default function AuditLogs({ apiKey }: { apiKey: string }) {
         ) : (
           <div className="space-y-2 max-h-96 overflow-y-auto">
             {logs.map((log) => (
-              <div key={log.id} className="p-3 border border-terminal-dim rounded bg-black/50">
+              <div key={log._id} className="p-3 border border-terminal-dim rounded bg-black/50">
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <code className="text-terminal-info text-sm flex-1">{log.command}</code>
+                  <code className="text-terminal-info text-sm flex-1 break-all mr-2">
+                    {log.command_text}
+                  </code>
                   <span
                     className={`text-xs px-2 py-1 rounded whitespace-nowrap ${
                       log.status === "EXECUTED"
@@ -77,7 +85,19 @@ export default function AuditLogs({ apiKey }: { apiKey: string }) {
                     {log.status}
                   </span>
                 </div>
-                <p className="text-terminal-dim text-xs">{`user: ${log.user} | time: ${log.timestamp}`}</p>
+                <div className="flex justify-between items-end">
+                  <p className="text-terminal-dim text-xs">
+                    {`user: ${log.user_id?.username || 'Unknown'} | role: ${log.user_id?.role || 'N/A'}`}
+                  </p>
+                  <p className="text-terminal-dim text-[10px]">
+                    {new Date(log.executed_at).toLocaleString()}
+                  </p>
+                </div>
+                {log.matched_rule_id && (
+                   <p className="text-terminal-dim text-[10px] mt-1">
+                     {`matched rule: ${log.matched_rule_id.pattern}`}
+                   </p>
+                )}
               </div>
             ))}
           </div>

@@ -36,19 +36,23 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="border border-terminal-accent rounded p-4 bg-black/30">
-        <h1 className="text-2xl font-bold mb-2 text-terminal-accent">{"> COMMAND GATEWAY"}</h1>
-        <p className="text-terminal-dim text-sm mb-6">$ authenticate with API key</p>
+      <div className="border border-terminal-accent rounded p-8 bg-black/30">
+        <h1 className="text-6xl font-bold mb-3 text-terminal-accent tracking-tighter">Tether</h1>
+        <p className="text-terminal-dim text-base mb-8 font-light">
+          Secure Command Gateway & Execution System
+          <br />
+          <span className="text-xs opacity-50 font-mono mt-2 block">$ system_ready</span>
+        </p>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-terminal-accent text-sm mb-2">API_KEY</label>
+            <label className="block text-terminal-accent text-xs mb-2 font-mono">ENTER API KEY</label>
             <input
               type="password"
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="sk_..."
-              className="w-full px-3 py-2 bg-terminal-bg border border-terminal-dim rounded text-terminal-text placeholder-terminal-dim focus:border-terminal-accent focus:outline-none"
+              className="w-full px-3 py-2 bg-terminal-bg border border-terminal-dim rounded text-terminal-text placeholder-terminal-dim focus:border-terminal-accent focus:outline-none font-mono"
             />
           </div>
 
@@ -56,14 +60,13 @@ export default function LoginForm() {
             type="submit"
             className="w-full py-2 px-4 bg-terminal-accent text-terminal-bg font-bold rounded hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
-            {"> LOGIN"}
+            {"> AUTHENTICATE"}
           </button>
         </div>
       </div>
 
       <div className="text-terminal-dim text-xs text-center space-y-1">
-        <p>$ Terminal Command Gateway System</p>
-        <p>$ API Key required for access</p>
+        <p>Tether v1.0.0</p>
       </div>
     </form>
   )

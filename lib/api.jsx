@@ -46,6 +46,10 @@ export const Api = {
   approvePendingCommand: (apiKey, id, action) =>
     request(`/api/admin/pending-commands/${id}`, { method: 'PUT', body: JSON.stringify({ action }) }, apiKey),
 
+  // Notifications
+  getNotifications: (apiKey) => request('/api/commands/notifications', { method: 'GET' }, apiKey),
+  deleteNotification: (apiKey, id) => request(`/api/commands/notifications/${id}`, { method: 'DELETE' }, apiKey),
+
   // User Management (Admin Only)
   getUsers: (apiKey) => request('/api/users', { method: 'GET' }, apiKey),
   createUser: (apiKey, body) => request('/api/users', { method: 'POST', body: JSON.stringify(body) }, apiKey),
